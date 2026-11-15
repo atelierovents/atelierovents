@@ -3,6 +3,7 @@ backend:
   branch: main
   repo: atelierovents/atelierovents
   base_url: https://decap-proxy.royal-bar-87fd.workers.dev
+  auth_endpoint: /auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
