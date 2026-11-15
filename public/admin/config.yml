@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: fr
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "accueil"
+        label: "Accueil"
+        file: "src/content/pages/accueil.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Texte", name: "body", widget: "markdown" }
+
+      - name: "atelier"
+        label: "Atelier"
+        file: "src/content/pages/atelier.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+      - name: "contact"
+        label: "Contact"
+        file: "src/content/pages/contact.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Introduction", name: "body", widget: "markdown" }
+
+  - name: "occasions"
+    label: "Instruments d'occasion"
+    folder: "src/content/occasions"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nom de l'instrument", name: "title", widget: "string" }
+      - { label: "Marque", name: "marque", widget: "string", required: false }
+      - { label: "Prix (€)", name: "prix", widget: "number", required: false }
+      - { label: "État", name: "etat", widget: "select", options: ["Neuf", "Très bon état", "Bon état", "À réviser"] }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
