@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   branch: main
   repo: atelierovents/atelierovents
   base_url: https://decap-proxy.royal-bar-87fd.workers.dev
