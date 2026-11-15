@@ -1,9 +1,7 @@
 backend:
-  name: github
+  name: turbo-github
+  turbo_site_id: 3ab099f1-f383-4e28-b093-c3830496e6ff
   branch: main
-  repo: atelierovents/atelierovents
-  base_url: https://decap-proxy.royal-bar-87fd.workers.dev
-  auth_endpoint: /auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
