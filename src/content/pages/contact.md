@@ -9,7 +9,7 @@ Une question, une demande particulière ? Laissez-nous votre message en rempliss
 
 **Atelier Ô Vents**\
 15 avenue de la Tour\
-12330 Clairvaux-d'Aveyr\
+12330 Clairvaux-d'Aveyron\
 Téléphone : 07 89 84 36 01\
 E-mail : contact@atelierovents.fr
 
