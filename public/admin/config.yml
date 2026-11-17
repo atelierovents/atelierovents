@@ -34,6 +34,13 @@ collections:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Introduction", name: "body", widget: "markdown" }
 
+          - name: "mentions-legales"
+        label: "Mentions légales"
+        file: "src/content/pages/mentions-legales.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
   - name: "occasions"
     label: "Instruments d'occasion"
     folder: "src/content/occasions"
