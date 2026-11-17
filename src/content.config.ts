@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob } from 'astro/loader';
 
 // Collection pour les pages fixes (accueil, atelier, contact, mentions légales)
 const pages = defineCollection({
