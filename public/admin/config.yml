@@ -34,7 +34,7 @@ collections:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Introduction", name: "body", widget: "markdown" }
 
-        - name: "mentions-legales"
+      - name: "mentions-legales"
         label: "Mentions légales"
         file: "src/content/pages/mentions-legales.md"
         fields:
