@@ -1,20 +1,18 @@
 ---
-title: "Mentions légales"
+title: Mentions légales
 ---
-
 ## Éditeur du site
 
 Le site **atelierovents.fr** est édité par :
 
-**Pierre Caudrelier**  
+**Pierre Caudrelier**\
 15 avenue de la Tour
 12330 Clairvaux d’Aveyron
 Téléphone : 07 89 84 36 01
 E-mail : contact@atelierovents.fr
 
 Statut : Entreprise individuelle
-SIRET : [Votre numéro SIRET]  
-TVA intracommunautaire : [Votre numéro de TVA]
+SIRET : 840 767 149 00031
 
 ## Directeur de la publication
 
@@ -24,9 +22,9 @@ Pierre Caudrelier
 
 Le site est hébergé par :
 
-**Cloudflare, Inc.**  
-101 Townsend Street  
-San Francisco, CA 94107, États-Unis  
+**Cloudflare, Inc.**\
+101 Townsend Street\
+San Francisco, CA 94107, États-Unis\
 Site web : https://www.cloudflare.com
 
 ## Propriété intellectuelle
@@ -37,7 +35,7 @@ L'ensemble des contenus présents sur ce site (textes, images, photographies, lo
 
 Les informations recueillies via le formulaire de contact (nom, e-mail, téléphone, sujet, message) sont utilisées uniquement pour répondre à vos demandes. Elles ne sont ni vendues ni transmises à des tiers.
 
-Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à : [Votre adresse e-mail].
+Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à : contact@atelierovents.fr.
 
 ## Cookies
 
