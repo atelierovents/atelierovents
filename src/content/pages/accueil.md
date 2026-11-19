@@ -1,6 +1,12 @@
 ---
-title: "Réparation d'instruments à vent"
-subtitle: "Saxophones, clarinettes, flûtes, trompettes… Un atelier artisanal au service de votre instrument."
+title: "Spécialiste des instruments à vent"
+subtitle: "Clairvaux d'Aveyron"
 ---
 
-Bienvenue à l'Atelier O Vents.
+## L'atelier
+
+Le cœur de notre métier, c'est l'entretien et la réparation de vos instruments à vent, cuivres et bois. Pour une réparation d'urgence, une révision annuelle, la restauration d'un instrument ancien, nous mettrons notre savoir-faire et notre passion à votre service afin de répondre au mieux à vos attentes.
+
+## Instruments d'occasion
+
+Découvrez des instruments d'occasion fraîchement révisés et prêts à jouer. Venez essayer et trouver celui qui accompagnera vos prochaines aventures musicales.
