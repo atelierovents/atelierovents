@@ -1,22 +1,59 @@
 ---
 import Layout from '../components/Layout.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('pages', 'accueil');
+const { title, subtitle } = entry.data;
+const { Content } = await entry.render();
 ---
 
-<Layout title="Accueil">
+<Layout title={title} description={subtitle}>
+  <!-- Bandeau d'accueil -->
   <section class="max-w-5xl mx-auto px-4 py-20 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
-      Réparation d'instruments à vent
+    <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
+      {title}
     </h1>
-    <p class="text-lg text-stone-600 max-w-2xl mx-auto mb-10">
-      Saxophones, clarinettes, flûtes, trompettes… Un atelier artisanal au service de votre instrument.
+    <p class="text-xl text-stone-600">
+      {subtitle}
     </p>
-    <div class="flex gap-4 justify-center">
-      <a href="/atelier" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition">
+  </section>
+
+  <!-- Section Atelier -->
+  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 class="text-2xl font-bold mb-4">L'atelier</h2>
+      <p class="text-stone-600 mb-6">
+        Le cœur de notre métier, c'est l'entretien et la réparation de vos instruments à vent, cuivres et bois. Pour une réparation d'urgence, une révision annuelle, la restauration d'un instrument ancien, nous mettrons notre savoir-faire et notre passion à votre service afin de répondre au mieux à vos attentes.
+      </p>
+      <a href="/atelier" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
         Découvrir l'atelier
       </a>
-      <a href="/contact" class="border border-stone-300 px-6 py-3 rounded-lg hover:bg-stone-100 transition">
-        Nous contacter
+    </div>
+    <div>
+      <img src="/images/atelier.jpg" alt="L'atelier de réparation" class="rounded-lg shadow-md w-full h-64 object-cover" />
+    </div>
+  </section>
+
+  <!-- Section Occasions -->
+  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div class="order-2 md:order-1">
+      <img src="/images/occasion.jpg" alt="Instruments d'occasion" class="rounded-lg shadow-md w-full h-64 object-cover" />
+    </div>
+    <div class="order-1 md:order-2">
+      <h2 class="text-2xl font-bold mb-4">Instruments d'occasion</h2>
+      <p class="text-stone-600 mb-6">
+        Découvrez des instruments d'occasion fraîchement révisés et prêts à jouer. Venez essayer et trouver celui qui accompagnera vos prochaines aventures musicales.
+      </p>
+      <a href="/occasions" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
+        Voir les instruments
       </a>
     </div>
+  </section>
+
+  <!-- Section Contact -->
+  <section class="max-w-5xl mx-auto px-4 py-12 text-center border-t border-stone-200">
+    <p class="text-stone-600">
+      Une question ? <a href="/contact" class="text-amber-700 hover:underline font-medium">Contactez-nous</a>
+    </p>
   </section>
 </Layout>
