@@ -1,7 +1,6 @@
 backend:
   name: turbo-github
   turbo_site_id: 3ab099f1-f383-4e28-b093-c3830496e6ff
-  branch: main
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -25,6 +24,31 @@ collections:
         file: "src/content/pages/atelier.md"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+      - name: "atelier-bois"
+        label: "Atelier — Les bois"
+        file: "src/content/pages/atelier-bois.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+      - name: "atelier-cuivres"
+        label: "Atelier — Les cuivres"
+        file: "src/content/pages/atelier-cuivres.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+      - name: "occasions"
+        label: "Occasions (page)"
+        file: "src/content/pages/occasions.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
       - name: "contact"
@@ -41,7 +65,7 @@ collections:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
-  - name: "occasions"
+  - name: "instruments"
     label: "Instruments d'occasion"
     folder: "src/content/occasions"
     create: true
@@ -51,5 +75,6 @@ collections:
       - { label: "Marque", name: "marque", widget: "string", required: false }
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
       - { label: "État", name: "etat", widget: "select", options: ["Neuf", "Très bon état", "Bon état", "À réviser"] }
+      - { label: "Photo principale", name: "photo", widget: "image", required: false }
+      - { label: "Galerie", name: "galerie", widget: "list", required: false, field: { label: "Photo", name: "image", widget: "image" } }
       - { label: "Description", name: "body", widget: "markdown" }
-      - { label: "Photo", name: "photo", widget: "image", required: false }
