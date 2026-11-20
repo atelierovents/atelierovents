@@ -1,10 +1,47 @@
 ---
 import Layout from '../components/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const entry = await getEntry('pages', 'occasions');
+const { title, subtitle } = entry.data;
+const { Content } = await entry.render();
+
+const instruments = await getCollection('occasions');
 ---
 
-<Layout title="Occasions">
-  <section class="max-w-5xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold mb-8">Occasions</h1>
-    <p class="text-stone-600">Instruments d'occasion disponibles à l'atelier…</p>
+<Layout title={title} description={subtitle}>
+  <section class="max-w-5xl mx-auto px-4 py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">{title}</h1>
+    <p class="text-lg text-stone-600 max-w-2xl mx-auto">{subtitle}</p>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-4 pb-16">
+    {instruments.length === 0 ? (
+      <p class="text-center text-stone-500">Aucun instrument disponible pour le moment.</p>
+    ) : (
+      <div class="grid md:grid-cols-2 gap-8">
+        {instruments.map((instrument) => (
+          <a href={`/occasions/${instrument.slug}`} class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+            {instrument.data.photo && (
+              <img src={instrument.data.photo} alt={instrument.data.title} class="w-full h-64 object-cover" />
+            )}
+            <div class="p-6">
+              <h2 class="text-xl font-bold mb-1">{instrument.data.title}</h2>
+              {instrument.data.marque && (
+                <p class="text-sm text-stone-500 mb-2">{instrument.data.marque}</p>
+              )}
+              <div class="flex items-center gap-4 text-sm">
+                {instrument.data.prix && (
+                  <span class="font-semibold text-amber-700">{instrument.data.prix} €</span>
+                )}
+                {instrument.data.etat && (
+                  <span class="text-stone-500">{instrument.data.etat}</span>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
   </section>
 </Layout>
