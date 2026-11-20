@@ -1,8 +1,8 @@
 ---
-title: "Saxophone alto"
-marque: "Yamaha"
-prix: 850
-etat: "Très bon état"
+title: Trombone complet
+marque: Selmer 1200 n°11948
+prix: 750
+etat: Bon état
+photo: /images/uploads/p1030547.webp
 ---
-
-Saxophone alto révisé, prêt à jouer.
+Trombone complet, prêt à jouer.
