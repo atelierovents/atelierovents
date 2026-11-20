@@ -1,0 +1,50 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const instruments = await getCollection('occasions');
+  return instruments.map((instrument) => ({
+    params: { slug: instrument.slug },
+    props: { instrument },
+  }));
+}
+
+const { instrument } = Astro.props;
+const { title, marque, prix, etat, photo, galerie } = instrument.data;
+const { Content } = await instrument.render();
+---
+
+<Layout title={title} description={`${title} — ${marque ?? ''} ${etat ?? ''}`}>
+  <section class="max-w-3xl mx-auto px-4 py-16">
+    <a href="/occasions" class="text-sm text-amber-700 hover:underline mb-6 inline-block">← Retour aux occasions</a>
+
+    {photo && (
+      <img src={photo} alt={title} class="w-full h-96 object-cover rounded-lg shadow-md mb-8" />
+    )}
+
+    {galerie && galerie.length > 0 && (
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        {galerie.map((img) => (
+          <img src={img} alt={title} class="w-full h-32 object-cover rounded-lg" />
+        ))}
+      </div>
+    )}
+
+    <h1 class="text-3xl font-bold mb-2">{title}</h1>
+    {marque && <p class="text-stone-500 mb-4">{marque}</p>}
+
+    <div class="flex items-center gap-4 mb-8">
+      {prix && <span class="text-2xl font-semibold text-amber-700">{prix} €</span>}
+      {etat && <span class="text-stone-500">{etat}</span>}
+    </div>
+
+    <div class="prose prose-stone mb-8">
+      <Content />
+    </div>
+
+    <a href="/contact" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
+      Nous contacter pour cet instrument
+    </a>
+  </section>
+</Layout>
