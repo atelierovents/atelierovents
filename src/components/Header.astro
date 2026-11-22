@@ -15,20 +15,30 @@ const logoSrc = logo.src;
 ---
 
 <header class="bg-white border-b border-stone-200">
-  <div class="max-w-5xl mx-auto px-4 pt-6 pb-4 sm:pt-8 flex flex-col items-center gap-4">
+  <div
+    class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4 sm:flex-col sm:gap-5 sm:pt-8 sm:pb-5"
+  >
     <!-- Le logo porte le nom du site : son texte alternatif est donc le nom
          lui-même, et non une description décorative. -->
-    <a href="/" class="block">
-      <img
-        src={logoSrc}
-        alt="Atelier Ô Vents"
-        width="160"
-        height="160"
-        class="h-28 w-auto sm:h-40"
-      />
+    <a href="/" class="block shrink-0">
+      <img src={logoSrc} alt="Atelier Ô Vents" width="192" height="192" class="h-28 w-auto sm:h-48" />
     </a>
-    <nav aria-label="Navigation principale">
-      <ul class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm font-medium sm:gap-x-8 sm:text-base">
+
+    <button
+      type="button"
+      data-menu-open
+      class="-mr-2 flex h-11 w-11 items-center justify-center rounded-lg text-brand transition-colors hover:bg-brand-50 sm:hidden"
+      aria-controls="menu-mobile"
+      aria-expanded="false"
+      aria-label="Ouvrir le menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+    </button>
+
+    <nav class="hidden sm:block" aria-label="Navigation principale">
+      <ul class="flex flex-wrap justify-center gap-x-8 gap-y-1 text-base font-medium">
         {nav.map(({ label, href }) => (
           <li>
             <a
@@ -45,4 +55,76 @@ const logoSrc = logo.src;
       </ul>
     </nav>
   </div>
+
+  <!-- Panneau latéral, mobile uniquement. <dialog> plutôt qu'une div : le focus
+       est piégé, Échap ferme, et le fond est inerte sans code supplémentaire. -->
+  <dialog id="menu-mobile" class="menu-drawer" aria-label="Menu">
+    <div class="mb-6 flex items-center justify-between">
+      <p class="text-xs font-semibold uppercase tracking-widest text-stone-500">Menu</p>
+      <button
+        type="button"
+        data-menu-close
+        class="-mr-2 flex h-10 w-10 items-center justify-center rounded-lg text-stone-600 transition-colors hover:bg-stone-100"
+        aria-label="Fermer le menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <nav aria-label="Navigation mobile">
+      <ul class="flex flex-col">
+        {nav.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block rounded-lg px-3 py-3 text-lg font-medium transition-colors hover:bg-brand-50',
+                current === href && 'text-gold-dark'
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </dialog>
 </header>
+
+<script>
+  const drawer = document.querySelector<HTMLDialogElement>('#menu-mobile');
+  const opener = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+
+  if (drawer && opener) {
+    const desktop = window.matchMedia('(min-width: 640px)');
+
+    const open = () => {
+      drawer.showModal();
+      opener.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => drawer.close();
+
+    opener.addEventListener('click', open);
+    drawer.querySelector('[data-menu-close]')?.addEventListener('click', close);
+    drawer.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+
+    // Un clic sur le fond (la zone du dialogue hors du panneau) referme.
+    drawer.addEventListener('click', (event) => {
+      if (event.target === drawer) close();
+    });
+
+    drawer.addEventListener('close', () => {
+      opener.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      opener.focus();
+    });
+
+    // Si la fenêtre passe en desktop alors que le panneau est ouvert.
+    desktop.addEventListener('change', (event) => {
+      if (event.matches && drawer.open) close();
+    });
+  }
+</script>

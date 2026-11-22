@@ -25,6 +25,11 @@ export default {
           dark: '#4f321a',
         },
       },
+      // Nunito Sans pour tout le texte : ses terminaisons arrondies prolongent
+      // la géométrie de Quicksand, la police du logo (vectorisée dans le SVG).
+      fontFamily: {
+        sans: ['"Nunito Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
       // Le contenu Markdown (prose) suit la même palette que le reste du site.
       typography: (theme) => ({
         DEFAULT: {
