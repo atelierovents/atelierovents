@@ -101,5 +101,10 @@ collections:
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
       - { label: "État", name: "etat", widget: "select", options: ["Neuf", "Très bon état", "Bon état", "À réviser"] }
       - { label: "Photo principale", name: "photo", widget: "image", required: false }
-      - { label: "Galerie", name: "galerie", widget: "list", required: false, field: { label: "Photo", name: "image", widget: "image" } }
+      - label: "Galerie"
+        name: "galerie"
+        widget: "list"
+        required: false
+        hint: "La photo principale ouvre le carrousel, puis ces photos dans l'ordre. Le glisser-déposer change l'ordre."
+        field: { label: "Photo", name: "image", widget: "image" }
       - { label: "Description", name: "body", widget: "markdown" }

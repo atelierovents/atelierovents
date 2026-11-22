@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 import { getCollection, render } from 'astro:content';
 import { instrumentSlug } from '../../lib/instrument-slug';
 
@@ -14,22 +15,23 @@ export async function getStaticPaths() {
 const { instrument } = Astro.props;
 const { title, marque, prix, etat, photo, galerie } = instrument.data;
 const { Content } = await render(instrument);
+
+// La photo principale ouvre le carrousel, la galerie suit. L'admin écrit une
+// simple liste de chemins ; les objets { image: … } restent acceptés pour ne
+// pas dépendre de la forme exacte du widget.
+const photos = [
+  photo,
+  ...(galerie ?? []).map((item) => (typeof item === 'string' ? item : item.image)),
+].filter((src): src is string => Boolean(src));
+
 ---
 
 <Layout title={title} description={`${title} — ${marque ?? ''} ${etat ?? ''}`}>
   <section class="max-w-3xl mx-auto px-4 py-16">
     <a href="/occasions" class="text-sm text-amber-700 hover:underline mb-6 inline-block">← Retour aux occasions</a>
 
-    {photo && (
-      <img src={photo} alt={title} class="w-full h-96 object-cover rounded-lg shadow-md mb-8" />
-    )}
-
-    {galerie && galerie.length > 0 && (
-      <div class="grid grid-cols-3 gap-4 mb-8">
-        {galerie.map((img) => (
-          <img src={img} alt={title} class="w-full h-32 object-cover rounded-lg" />
-        ))}
-      </div>
+    {photos.length > 0 && (
+      <PhotoGallery photos={photos.map((src) => ({ src, alt: title }))} label={`Photos de ${title}`} />
     )}
 
     <h1 class="text-3xl font-bold mb-2">{title}</h1>

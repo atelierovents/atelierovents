@@ -32,7 +32,8 @@ const occasions = defineCollection({
     prix: z.number().optional(),
     etat: z.string().optional(),
     photo: z.string().optional(),
-    galerie: z.array(z.string()).optional(),
+    // Decap écrit une liste de chemins ; la forme { image } reste tolérée.
+    galerie: z.array(z.union([z.string(), z.object({ image: z.string() })])).optional(),
   }),
 });
 
