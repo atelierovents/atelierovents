@@ -1,4 +1,6 @@
 ---
+import logoMark from '../assets/logo-symbol.svg';
+
 const nav = [
   { label: 'Accueil', href: '/' },
   { label: 'Atelier', href: '/atelier' },
@@ -6,15 +8,22 @@ const nav = [
   { label: 'Contact', href: '/contact' },
 ];
 const current = Astro.url.pathname;
+
+// Le fichier est importé depuis src/assets : le build émet une URL hachée, mise
+// en cache indéfiniment, et le logo suit le déploiement du site.
+const markSrc = logoMark.src;
 ---
 
 <header class="bg-white shadow-sm">
-  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-xl font-semibold tracking-tight text-amber-800">
-      Atelier O Vents
+  <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+    <a href="/" class="flex items-center gap-3 text-amber-800">
+      <!-- Le nom reste du texte : le monogramme seul ne le porte pas, et il est
+           ainsi lu par Google comme par les lecteurs d'écran (image décorative). -->
+      <img src={markSrc} alt="" width="23" height="40" class="h-10 w-auto" />
+      <span class="text-xl font-semibold tracking-tight">Atelier O Vents</span>
     </a>
-    <nav>
-      <ul class="flex gap-6 text-sm font-medium">
+    <nav class="w-full sm:w-auto">
+      <ul class="flex justify-center gap-4 text-sm font-medium sm:justify-end sm:gap-6">
         {nav.map(({ label, href }) => (
           <li>
             <a
