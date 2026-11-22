@@ -15,7 +15,7 @@ const { Content: CuivresContent } = await cuivres.render();
 <Layout title={title} description={subtitle}>
   <!-- Bandeau de titre -->
   <section class="max-w-5xl mx-auto px-4 py-16 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
+    <h1 class="text-4xl md:text-5xl font-bold text-brand mb-4">
       {title}
     </h1>
     <p class="text-lg text-stone-600 max-w-2xl mx-auto">
@@ -25,7 +25,7 @@ const { Content: CuivresContent } = await cuivres.render();
 
   <!-- Introduction -->
   <section class="max-w-3xl mx-auto px-4 pb-12 text-center">
-    <div class="prose prose-stone mx-auto">
+    <div class="prose mx-auto">
       <MainContent />
     </div>
   </section>
@@ -36,9 +36,9 @@ const { Content: CuivresContent } = await cuivres.render();
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <img src="/images/bois.jpg" alt="Instruments à vent en bois" class="w-full h-48 object-cover" />
       <div class="p-6">
-        <h2 class="text-2xl font-bold mb-1">{bois.data.title}</h2>
+        <h2 class="text-2xl font-bold text-brand mb-1">{bois.data.title}</h2>
         <p class="text-sm text-stone-500 mb-4">{bois.data.subtitle}</p>
-        <div class="prose prose-stone prose-sm">
+        <div class="prose prose-sm">
           <BoisContent />
         </div>
       </div>
@@ -48,9 +48,9 @@ const { Content: CuivresContent } = await cuivres.render();
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <img src="/images/cuivres.jpg" alt="Instruments à vent en cuivre" class="w-full h-48 object-cover" />
       <div class="p-6">
-        <h2 class="text-2xl font-bold mb-1">{cuivres.data.title}</h2>
+        <h2 class="text-2xl font-bold text-brand mb-1">{cuivres.data.title}</h2>
         <p class="text-sm text-stone-500 mb-4">{cuivres.data.subtitle}</p>
-        <div class="prose prose-stone prose-sm">
+        <div class="prose prose-sm">
           <CuivresContent />
         </div>
       </div>
@@ -59,7 +59,7 @@ const { Content: CuivresContent } = await cuivres.render();
 
   <!-- Appel à l'action -->
   <section class="max-w-5xl mx-auto px-4 pb-16 text-center">
-    <a href="/contact" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
+    <a href="/contact" class="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition font-medium">
       Demander un devis
     </a>
   </section>

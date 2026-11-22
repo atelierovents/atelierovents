@@ -12,13 +12,13 @@ const instruments = await getCollection('occasions');
 
 <Layout title={title} description={subtitle}>
   <section class="max-w-5xl mx-auto px-4 py-16 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">{title}</h1>
+    <h1 class="text-4xl md:text-5xl font-bold text-brand mb-4">{title}</h1>
     <p class="text-lg text-stone-600 max-w-2xl mx-auto">{subtitle}</p>
   </section>
 
   <!-- Introduction de la page, rédigée depuis l'admin (Decap).
        Les fiches ci-dessous, elles, viennent de la collection « occasions ». -->
-  <section class="max-w-3xl mx-auto px-4 pb-12 prose prose-stone">
+  <section class="max-w-3xl mx-auto px-4 pb-12 prose">
     <Content />
   </section>
 
@@ -33,13 +33,13 @@ const instruments = await getCollection('occasions');
               <img src={instrument.data.photo} alt={instrument.data.title} class="w-full h-64 object-cover" />
             )}
             <div class="p-6">
-              <h2 class="text-xl font-bold mb-1">{instrument.data.title}</h2>
+              <h2 class="text-xl font-bold text-brand mb-1">{instrument.data.title}</h2>
               {instrument.data.marque && (
                 <p class="text-sm text-stone-500 mb-2">{instrument.data.marque}</p>
               )}
               <div class="flex items-center gap-4 text-sm">
                 {instrument.data.prix && (
-                  <span class="font-semibold text-amber-700">{instrument.data.prix} €</span>
+                  <span class="font-semibold text-gold-dark">{instrument.data.prix} €</span>
                 )}
                 {instrument.data.etat && (
                   <span class="text-stone-500">{instrument.data.etat}</span>

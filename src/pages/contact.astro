@@ -9,7 +9,7 @@ const { Content } = await entry.render();
 
 <Layout title="Contact" description="Contactez l'Atelier Ô Vents pour un devis ou une question.">
   <section class="max-w-5xl mx-auto px-4 py-16">
-    <h1 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Contact</h1>
+    <h1 class="text-3xl md:text-4xl font-bold text-brand mb-4">Contact</h1>
     <p class="text-stone-600 mb-10 max-w-2xl">
       Une question, une demande particulière ? Laissez-nous votre message en remplissant le formulaire ci-dessous.
       Nous ferons de notre mieux pour vous répondre dans les plus brefs délais.
@@ -26,32 +26,32 @@ const { Content } = await entry.render();
 
       <div>
         <label for="nom" class="block text-sm font-medium mb-1">Nom <span class="text-red-600">*</span></label>
-        <input type="text" id="nom" name="nom" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600" />
+        <input type="text" id="nom" name="nom" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
       </div>
 
       <div>
         <label for="telephone" class="block text-sm font-medium mb-1">Téléphone <span class="text-stone-400 text-xs">(facultatif)</span></label>
-        <input type="tel" id="telephone" name="telephone" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600" />
+        <input type="tel" id="telephone" name="telephone" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
       </div>
 
       <div>
         <label for="email" class="block text-sm font-medium mb-1">E-mail <span class="text-red-600">*</span></label>
-        <input type="email" id="email" name="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600" />
+        <input type="email" id="email" name="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
       </div>
 
       <div>
         <label for="sujet" class="block text-sm font-medium mb-1">Sujet <span class="text-red-600">*</span></label>
-        <input type="text" id="sujet" name="sujet" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600" />
+        <input type="text" id="sujet" name="sujet" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
       </div>
 
       <div>
         <label for="message" class="block text-sm font-medium mb-1">Message <span class="text-red-600">*</span></label>
-        <textarea id="message" name="message" rows="6" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
+        <textarea id="message" name="message" rows="6" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand"></textarea>
       </div>
 
       <input type="hidden" name="redirect" value="https://atelierovents.pages.dev/contact?envoye=1" />
 
-      <button type="submit" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
+      <button type="submit" class="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition font-medium">
         Envoyer le message
       </button>
 
@@ -60,7 +60,7 @@ const { Content } = await entry.render();
 
   <!-- Coordonnées + Carte (deux colonnes) -->
   <section class="max-w-5xl mx-auto px-4 pb-16 grid md:grid-cols-2 gap-10">
-    <div class="prose prose-stone">
+    <div class="prose">
       <Content />
     </div>
     <div>

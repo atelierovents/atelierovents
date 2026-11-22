@@ -43,7 +43,7 @@ const hasControls = photos.length > 1;
           type="button"
           data-prev
           aria-label="Photo précédente"
-          class="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-stone-200 bg-white/90 text-2xl leading-none text-stone-700 shadow-sm transition hover:bg-white hover:text-amber-800"
+          class="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-stone-200 bg-white/90 text-2xl leading-none text-stone-700 shadow-sm transition hover:bg-white hover:text-brand"
         >
           ‹
         </button>
@@ -51,7 +51,7 @@ const hasControls = photos.length > 1;
           type="button"
           data-next
           aria-label="Photo suivante"
-          class="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-stone-200 bg-white/90 text-2xl leading-none text-stone-700 shadow-sm transition hover:bg-white hover:text-amber-800"
+          class="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-stone-200 bg-white/90 text-2xl leading-none text-stone-700 shadow-sm transition hover:bg-white hover:text-brand"
         >
           ›
         </button>
@@ -76,7 +76,7 @@ const hasControls = photos.length > 1;
             data-index={index}
             aria-label={`Voir la photo ${index + 1}`}
             aria-current={index === 0 ? 'true' : 'false'}
-            class="overflow-hidden rounded border-2 border-stone-200 opacity-60 transition hover:opacity-100 aria-[current=true]:border-amber-700 aria-[current=true]:opacity-100"
+            class="overflow-hidden rounded border-2 border-stone-200 opacity-60 transition hover:opacity-100 aria-[current=true]:border-gold aria-[current=true]:opacity-100"
           >
             <img src={photo.src} alt="" class="block h-14 w-full object-cover sm:h-16" decoding="async" />
           </button>

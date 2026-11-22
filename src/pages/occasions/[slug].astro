@@ -28,25 +28,25 @@ const photos = [
 
 <Layout title={title} description={`${title} — ${marque ?? ''} ${etat ?? ''}`}>
   <section class="max-w-3xl mx-auto px-4 py-16">
-    <a href="/occasions" class="text-sm text-amber-700 hover:underline mb-6 inline-block">← Retour aux occasions</a>
+    <a href="/occasions" class="text-sm text-gold-dark hover:underline mb-6 inline-block">← Retour aux occasions</a>
 
     {photos.length > 0 && (
       <PhotoGallery photos={photos.map((src) => ({ src, alt: title }))} label={`Photos de ${title}`} />
     )}
 
-    <h1 class="text-3xl font-bold mb-2">{title}</h1>
+    <h1 class="text-3xl font-bold text-brand mb-2">{title}</h1>
     {marque && <p class="text-stone-500 mb-4">{marque}</p>}
 
     <div class="flex items-center gap-4 mb-8">
-      {prix && <span class="text-2xl font-semibold text-amber-700">{prix} €</span>}
+      {prix && <span class="text-2xl font-semibold text-gold-dark">{prix} €</span>}
       {etat && <span class="text-stone-500">{etat}</span>}
     </div>
 
-    <div class="prose prose-stone mb-8">
+    <div class="prose mb-8">
       <Content />
     </div>
 
-    <a href="/contact" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
+    <a href="/contact" class="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition font-medium">
       Nous contacter pour cet instrument
     </a>
   </section>
