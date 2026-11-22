@@ -17,6 +17,11 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Phrase d'accroche"
+            name: "tagline"
+            widget: "text"
+            required: false
+            hint: "Facultative. S'affiche sous un filet doré ; plusieurs lignes possibles."
           - label: "Sections (texte + photo, en colonnes alternées)"
             name: "sections"
             widget: "list"
@@ -50,6 +55,11 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Phrase d'accroche"
+            name: "tagline"
+            widget: "text"
+            required: false
+            hint: "Facultative. S'affiche sous un filet doré ; plusieurs lignes possibles."
           - { label: "Contenu", name: "body", widget: "markdown" }
 
       - name: "atelier-bois"
@@ -74,6 +84,11 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Phrase d'accroche"
+            name: "tagline"
+            widget: "text"
+            required: false
+            hint: "Facultative. S'affiche sous un filet doré ; plusieurs lignes possibles."
           - { label: "Contenu", name: "body", widget: "markdown" }
 
       - name: "contact"

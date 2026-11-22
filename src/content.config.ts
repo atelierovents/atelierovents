@@ -19,6 +19,8 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
+    // Phrase d'accroche facultative, affichée sous le filet du bandeau.
+    tagline: z.string().optional(),
     sections: z.array(homeSection).optional(),
   }),
 });
