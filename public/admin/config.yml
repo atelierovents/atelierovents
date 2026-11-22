@@ -17,7 +17,32 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Sous-titre", name: "subtitle", widget: "text" }
-          - { label: "Texte", name: "body", widget: "markdown" }
+          - label: "Sections (texte + photo, en colonnes alternées)"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.heading}}"
+            fields:
+              - { label: "Titre de la section", name: "heading", widget: "string" }
+              - label: "Texte"
+                name: "text"
+                widget: "text"
+                hint: "Une ligne vide sépare deux paragraphes."
+              - label: "Photo"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Sans photo, la section s'affiche en pleine largeur."
+              - label: "Description de la photo"
+                name: "imageAlt"
+                widget: "string"
+                required: false
+                hint: "Lu par les lecteurs d'écran et utilisé par Google Images."
+              - { label: "Bouton — texte", name: "linkLabel", widget: "string", required: false }
+              - label: "Bouton — lien"
+                name: "linkUrl"
+                widget: "string"
+                required: false
+                hint: "Un chemin interne, par exemple /atelier, /occasions ou /contact."
 
       - name: "atelier"
         label: "Atelier"

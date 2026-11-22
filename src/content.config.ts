@@ -1,12 +1,25 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// Une section de l'accueil : bloc texte + photo, affiché en colonnes alternées.
+// Les champs facultatifs laissent ajouter la photo et le bouton plus tard sans
+// casser le build (une section sans photo passe simplement en pleine largeur).
+const homeSection = z.object({
+  heading: z.string(),
+  text: z.string(),
+  image: z.string().optional(),
+  imageAlt: z.string().optional(),
+  linkLabel: z.string().optional(),
+  linkUrl: z.string().optional(),
+});
+
 // Collection pour les pages fixes (accueil, atelier, contact, mentions légales, occasions)
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
+    sections: z.array(homeSection).optional(),
   }),
 });
 

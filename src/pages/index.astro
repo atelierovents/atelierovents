@@ -3,8 +3,10 @@ import Layout from '../components/Layout.astro';
 import { getEntry } from 'astro:content';
 
 const entry = await getEntry('pages', 'accueil');
-const { title, subtitle } = entry.data;
-const { Content } = await entry.render();
+const { title, subtitle, sections = [] } = entry.data;
+
+/** Une ligne vide sépare deux paragraphes dans le champ « Texte » de l'admin. */
+const paragraphs = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 ---
 
 <Layout title={title} description={subtitle}>
@@ -18,22 +20,45 @@ const { Content } = await entry.render();
     </p>
   </section>
 
-  <!-- Corps de la page, entièrement rédigé depuis l'admin (Decap).
-       Les titres de section, paragraphes, listes, liens et images insérés
-       dans l'éditeur Markdown atterrissent tous ici. -->
-  <section class="max-w-3xl mx-auto px-4 pb-12 prose prose-stone lg:prose-lg">
-    <Content />
-  </section>
-
-  <!-- Raccourcis de navigation : structure du site, pas du contenu -->
-  <section class="max-w-5xl mx-auto px-4 pb-16 flex flex-col sm:flex-row gap-4 justify-center">
-    <a href="/atelier" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium text-center">
-      Découvrir l'atelier
-    </a>
-    <a href="/occasions" class="border border-amber-700 text-amber-800 px-6 py-3 rounded-lg hover:bg-amber-50 transition font-medium text-center">
-      Voir les instruments
-    </a>
-  </section>
+  <!-- Sections alternées : texte d'un côté, photo de l'autre.
+       L'ordre s'inverse une section sur deux. Une section sans photo passe en
+       pleine largeur, ce qui permet de publier avant d'avoir les visuels. -->
+  {sections.map((section, index) => {
+    const reversed = index % 2 === 1;
+    return (
+      <section
+        class:list={[
+          'mx-auto px-4 py-12 gap-10 items-center',
+          section.image ? 'max-w-5xl grid md:grid-cols-2' : 'max-w-3xl',
+        ]}
+      >
+        <div class:list={[reversed && 'md:order-2']}>
+          <h2 class="text-2xl font-bold mb-4">{section.heading}</h2>
+          <div class="text-stone-600 mb-6 space-y-3">
+            {paragraphs(section.text).map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          {section.linkLabel && section.linkUrl && (
+            <a
+              href={section.linkUrl}
+              class="inline-block bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium"
+            >
+              {section.linkLabel}
+            </a>
+          )}
+        </div>
+        {section.image && (
+          <div class:list={[reversed && 'md:order-1']}>
+            <img
+              src={section.image}
+              alt={section.imageAlt ?? section.heading}
+              class="rounded-lg shadow-md w-full h-64 object-cover"
+              loading="lazy"
+            />
+          </div>
+        )}
+      </section>
+    );
+  })}
 
   <!-- Section Contact -->
   <section class="max-w-5xl mx-auto px-4 py-12 text-center border-t border-stone-200">
