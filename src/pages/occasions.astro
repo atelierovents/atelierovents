@@ -1,6 +1,7 @@
 ---
 import Layout from '../components/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { instrumentSlug } from '../lib/instrument-slug';
 
 const entry = await getEntry('pages', 'occasions');
 const { title, subtitle } = entry.data;
@@ -21,7 +22,7 @@ const instruments = await getCollection('occasions');
     ) : (
       <div class="grid md:grid-cols-2 gap-8">
         {instruments.map((instrument) => (
-          <a href={`/occasions/${instrument.slug}`} class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+          <a href={`/occasions/${instrumentSlug(instrument.id)}`} class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
             {instrument.data.photo && (
               <img src={instrument.data.photo} alt={instrument.data.title} class="w-full h-64 object-cover" />
             )}
