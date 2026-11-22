@@ -6,12 +6,13 @@ title: Mentions légales
 Le site **atelierovents.fr** est édité par :
 
 **Pierre Caudrelier**\
-15 avenue de la Tour
+15 avenue de la Tour\
 12330 Clairvaux d’Aveyron
-Téléphone : 07 89 84 36 01
+
+Téléphone : 07 89 84 36 01\
 E-mail : contact@atelierovents.fr
 
-Statut : Entreprise individuelle
+Statut : Entreprise individuelle\
 SIRET : 840 767 149 00031
 
 ## Directeur de la publication
