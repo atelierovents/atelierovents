@@ -8,8 +8,8 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={title} description={subtitle}>
-  <!-- Bandeau d'accueil -->
-  <section class="max-w-5xl mx-auto px-4 py-20 text-center">
+  <!-- Bandeau d'accueil : titre et sous-titre viennent de l'admin -->
+  <section class="max-w-5xl mx-auto px-4 pt-20 pb-12 text-center">
     <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
       {title}
     </h1>
@@ -18,36 +18,21 @@ const { Content } = await entry.render();
     </p>
   </section>
 
-  <!-- Section Atelier -->
-  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h2 class="text-2xl font-bold mb-4">L'atelier</h2>
-      <p class="text-stone-600 mb-6">
-        Le cœur de notre métier, c'est l'entretien et la réparation de vos instruments à vent, cuivres et bois. Pour une réparation d'urgence, une révision annuelle, la restauration d'un instrument ancien, nous mettrons notre savoir-faire et notre passion à votre service afin de répondre au mieux à vos attentes.
-      </p>
-      <a href="/atelier" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
-        Découvrir l'atelier
-      </a>
-    </div>
-    <div>
-      <img src="/images/atelier.jpg" alt="L'atelier de réparation" class="rounded-lg shadow-md w-full h-64 object-cover" />
-    </div>
+  <!-- Corps de la page, entièrement rédigé depuis l'admin (Decap).
+       Les titres de section, paragraphes, listes, liens et images insérés
+       dans l'éditeur Markdown atterrissent tous ici. -->
+  <section class="max-w-3xl mx-auto px-4 pb-12 prose prose-stone lg:prose-lg">
+    <Content />
   </section>
 
-  <!-- Section Occasions -->
-  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
-    <div class="order-2 md:order-1">
-      <img src="/images/occasion.jpg" alt="Instruments d'occasion" class="rounded-lg shadow-md w-full h-64 object-cover" />
-    </div>
-    <div class="order-1 md:order-2">
-      <h2 class="text-2xl font-bold mb-4">Instruments d'occasion</h2>
-      <p class="text-stone-600 mb-6">
-        Découvrez des instruments d'occasion fraîchement révisés et prêts à jouer. Venez essayer et trouver celui qui accompagnera vos prochaines aventures musicales.
-      </p>
-      <a href="/occasions" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium">
-        Voir les instruments
-      </a>
-    </div>
+  <!-- Raccourcis de navigation : structure du site, pas du contenu -->
+  <section class="max-w-5xl mx-auto px-4 pb-16 flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="/atelier" class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition font-medium text-center">
+      Découvrir l'atelier
+    </a>
+    <a href="/occasions" class="border border-amber-700 text-amber-800 px-6 py-3 rounded-lg hover:bg-amber-50 transition font-medium text-center">
+      Voir les instruments
+    </a>
   </section>
 
   <!-- Section Contact -->
