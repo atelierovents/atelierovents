@@ -6,80 +6,156 @@ import { getEntry } from 'astro:content';
 const entry = await getEntry('pages', 'contact');
 const { title, tagline } = entry.data;
 const { Content } = await entry.render();
+
+// Coordonnées de l'atelier, reprises de la carte affichée plus bas.
+const lat = '44.4275280';
+const lon = '2.4106785';
+const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
 ---
 
 <Layout title="Contact" description={tagline || "Contactez l'Atelier Ô Vents pour un devis ou une question."}>
   <PageHeader title={title} tagline={tagline} compact />
 
-  <section class="max-w-5xl mx-auto px-4 pb-16">
-    <!-- L'introduction est l'accroche du bandeau : elle est saisie dans l'admin,
-         et ne doit pas être répétée ici. -->
-
-    <!-- Formulaire de contact -->
-    <form
-      action="https://api.web3forms.com/submit"
-      method="POST"
-      class="space-y-6 max-w-2xl mb-16"
+  <!-- Sur mobile, appeler est le geste le plus direct : un raccourci avant le
+       formulaire, pour ne pas avoir à faire défiler les coordonnées. -->
+  <div class="lg:hidden max-w-5xl mx-auto px-4 mb-10">
+    <a
+      href={phone.href}
+      class="flex items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-3 font-medium text-brand shadow-sm transition hover:border-brand/40"
     >
-      <input type="hidden" name="access_key" value="29d1abbc-113b-4826-8fa2-e4f16a538d2e" />
-      <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+      </svg>
+      Appeler l'atelier · {phone.label}
+    </a>
+  </div>
 
-      <div>
-        <label for="nom" class="block text-sm font-medium mb-1">Nom <span class="text-red-600">*</span></label>
-        <input type="text" id="nom" name="nom" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+  <!-- Deux colonnes sur grand écran : le formulaire à gauche, les coordonnées
+       à droite. Le formulaire vient d'abord dans le document, pour que l'ordre
+       de lecture suive celui de l'écran sur mobile. -->
+  <section class="max-w-5xl mx-auto px-4 pb-16 grid gap-10 lg:grid-cols-5 lg:items-start">
+    <div class="lg:col-span-3">
+      <!-- Confirmation affichée à la place du formulaire, sans changer de page. -->
+      <div
+        id="contact-success"
+        role="status"
+        tabindex="-1"
+        class="hidden rounded-lg border border-green-300 bg-green-50 p-6 text-green-900"
+      >
+        <p class="font-semibold mb-1">Message envoyé.</p>
+        <p class="text-sm">Merci, nous vous répondrons dans les plus brefs délais.</p>
       </div>
 
-      <div>
-        <label for="telephone" class="block text-sm font-medium mb-1">Téléphone <span class="text-stone-400 text-xs">(facultatif)</span></label>
-        <input type="tel" id="telephone" name="telephone" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
-      </div>
+      <form
+        id="contact-form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="space-y-6"
+      >
+        <input type="hidden" name="access_key" value="29d1abbc-113b-4826-8fa2-e4f16a538d2e" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
 
-      <div>
-        <label for="email" class="block text-sm font-medium mb-1">E-mail <span class="text-red-600">*</span></label>
-        <input type="email" id="email" name="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
-      </div>
+        <div>
+          <label for="nom" class="block text-sm font-medium mb-1">Nom <span class="text-red-600">*</span></label>
+          <input type="text" id="nom" name="nom" autocomplete="name" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+        </div>
 
-      <div>
-        <label for="sujet" class="block text-sm font-medium mb-1">Sujet <span class="text-red-600">*</span></label>
-        <input type="text" id="sujet" name="sujet" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
-      </div>
+        <div>
+          <label for="telephone" class="block text-sm font-medium mb-1">Téléphone <span class="text-stone-400 text-xs">(facultatif)</span></label>
+          <input type="tel" id="telephone" name="telephone" autocomplete="tel" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+        </div>
 
-      <div>
-        <label for="message" class="block text-sm font-medium mb-1">Message <span class="text-red-600">*</span></label>
-        <textarea id="message" name="message" rows="6" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand"></textarea>
-      </div>
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1">E-mail <span class="text-red-600">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+        </div>
 
-      <input type="hidden" name="redirect" value="https://atelierovents.pages.dev/contact?envoye=1" />
+        <div>
+          <label for="sujet" class="block text-sm font-medium mb-1">Sujet <span class="text-red-600">*</span></label>
+          <input type="text" id="sujet" name="sujet" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand" />
+        </div>
 
-      <button type="submit" class="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition font-medium">
-        Envoyer le message
-      </button>
+        <div>
+          <label for="message" class="block text-sm font-medium mb-1">Message <span class="text-red-600">*</span></label>
+          <textarea id="message" name="message" rows="6" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand"></textarea>
+        </div>
 
-      <p class="text-xs text-stone-500">Les champs marqués d'un <span class="text-red-600">*</span> sont obligatoires.</p>
-    </form>
+        <div
+          id="contact-error"
+          role="alert"
+          class="hidden rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800"
+        >
+          L'envoi n'a pas abouti. Réessayez dans un instant, ou écrivez-nous directement à
+          <a href="mailto:contact@atelierovents.fr" class="underline">contact@atelierovents.fr</a>.
+        </div>
 
-  <!-- Coordonnées + Carte (deux colonnes) -->
-  <section class="max-w-5xl mx-auto px-4 pb-16 grid md:grid-cols-2 gap-10">
-    <div class="prose">
-      <Content />
+        <button type="submit" class="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition font-medium disabled:opacity-60">
+          Envoyer le message
+        </button>
+
+        <p class="text-xs text-stone-500 leading-relaxed">
+          Les champs marqués d'un <span class="text-red-600">*</span> sont obligatoires.
+          Vos informations servent uniquement à répondre à votre demande : voir les
+          <a href="/mentions-legales" class="underline hover:text-brand">mentions légales</a>.
+        </p>
+      </form>
     </div>
-    <div>
-      <iframe
-        src="https://www.openstreetmap.org/export/embed.html?bbox=2.4056785%2C44.4255280%2C2.4156785%2C44.4295280&layer=mapnik&marker=44.4275280%2C2.4106785"
-        class="w-full h-64 rounded-lg shadow-md border-0"
-        title="Carte de localisation de l'atelier"
-        loading="lazy"
-      ></iframe>
-    </div>
+
+    <aside class="lg:col-span-2 space-y-6">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div>
+        <iframe
+          src={`https://www.openstreetmap.org/export/embed.html?bbox=2.4056785%2C44.4255280%2C2.4156785%2C44.4295280&layer=mapnik&marker=${lat}%2C${lon}`}
+          class="w-full h-56 rounded-lg shadow-sm border-0"
+          title="Carte de localisation de l'atelier"
+          loading="lazy"
+        ></iframe>
+        <a
+          href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`}
+          target="_blank"
+          rel="noopener"
+          class="mt-2 inline-block text-sm text-gold-dark hover:underline"
+        >
+          Ouvrir la carte et l'itinéraire →
+        </a>
+      </div>
+    </aside>
   </section>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('envoye') === '1') {
-      const banner = document.createElement('div');
-      banner.className = 'bg-green-100 text-green-800 border border-green-300 rounded-lg p-4 mb-6 max-w-2xl mx-auto';
-      banner.textContent = 'Merci ! Votre message a bien été envoyé. Nous vous répondrons rapidement.';
-      document.querySelector('section')?.prepend(banner);
-    }
+    // Envoi sans quitter la page. Sans JavaScript, le formulaire part quand même
+    // vers Web3Forms, qui affiche sa propre page de confirmation.
+    const form = document.querySelector<HTMLFormElement>('#contact-form');
+    const success = document.querySelector<HTMLElement>('#contact-success');
+    const error = document.querySelector<HTMLElement>('#contact-error');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) button.disabled = true;
+      error?.classList.add('hidden');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error(result.message ?? 'Échec de l’envoi');
+
+        form.classList.add('hidden');
+        success?.classList.remove('hidden');
+        success?.focus();
+        success?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      } catch {
+        error?.classList.remove('hidden');
+        error?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        if (button) button.disabled = false;
+      }
+    });
   </script>
 </Layout>
