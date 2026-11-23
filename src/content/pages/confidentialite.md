@@ -24,7 +24,7 @@ Aucune donnée n'est utilisée pour de la prospection commerciale, ni cédée, n
 
 ## Qui reçoit les données
 
-Les messages sont acheminés par le service **Formdall**, hébergé en Allemagne, qui agit comme sous-traitant de l'atelier. L'atelier a choisi de ne pas conserver les messages chez ce prestataire : ils sont transmis par e-mail et n'y restent pas stockés. Seuls des journaux techniques subsistent le temps de leur rotation, quatorze jours, et les adresses IP y sont conservées sous forme hachée.
+Les messages sont acheminés par le service **Formdall**, hébergé en Allemagne, qui agit comme sous-traitant de l'atelier. L'atelier a choisi de ne pas conserver les messages chez ce prestataire : ils sont transmis par e-mail et n'y restent pas stockés. Seuls subsistent des journaux techniques, dans lesquels les adresses IP sont conservées sous forme hachée et pour une durée limitée.
 
 Aucune donnée saisie dans le formulaire n'est transférée en dehors de l'Union européenne.
 
