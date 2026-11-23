@@ -8,5 +8,18 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // L'aperçu d'une fiche peut être rendu dans un document séparé : la feuille
+      // de style de l'admin ne l'atteint pas. On l'enregistre donc auprès de
+      // Decap, qui l'injecte dans l'aperçu. On attend que le script du CMS ait
+      // fini de s'exécuter, avec une limite pour ne pas boucler indéfiniment.
+      (function registerPreviewStyle(attempt) {
+        if (window.CMS && typeof CMS.registerPreviewStyle === 'function') {
+          CMS.registerPreviewStyle('/admin/custom.css?v=2');
+          return;
+        }
+        if (attempt < 50) setTimeout(() => registerPreviewStyle(attempt + 1), 100);
+      })(0);
+    </script>
   </body>
 </html>
