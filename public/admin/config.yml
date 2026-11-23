@@ -165,7 +165,12 @@ collections:
         widget: "string"
         hint: "Une seule ligne : par exemple « Saxhorn basse Courtois AC164 n°12705 »."
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
-      - { label: "État", name: "etat", widget: "select", options: ["État neuf", "Très bon état", "Bon état", "En état"] }
+      - label: "État"
+        name: "etat"
+        widget: "select"
+        required: false
+        options: ["État neuf", "Très bon état", "Bon état", "En état"]
+        hint: "Peut rester vide dans un brouillon ; à renseigner avant publication."
       - label: "Vendu"
         name: "vendu"
         widget: "boolean"
@@ -183,4 +188,8 @@ collections:
         required: false
         hint: "La photo principale ouvre le carrousel, puis ces photos dans l'ordre. Le glisser-déposer change l'ordre. Même format que la photo principale : 4:3, 1600 px de large, WebP. Astuce : déposez d'abord tous les fichiers d'un coup dans la médiathèque (bouton « Media » en haut), puis ajoutez-les ici — chaque entrée n'accepte qu'un fichier."
         field: { label: "Photo", name: "image", widget: "image" }
-      - { label: "Description", name: "body", widget: "markdown" }
+      - label: "Description"
+        name: "body"
+        widget: "markdown"
+        required: false
+        hint: "Peut rester vide dans un brouillon ; à renseigner avant publication."
