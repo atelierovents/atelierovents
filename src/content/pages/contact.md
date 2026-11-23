@@ -1,10 +1,9 @@
 ---
 title: Contact
+tagline: Une question, une demande particulière ? Laissez-nous votre message en
+  remplissant le formulaire ci-dessous. Nous ferons de notre mieux pour vous
+  répondre dans les plus brefs délais.
 ---
-## Parlons de votre instrument
-
-Une question, une demande particulière ? Laissez-nous votre message en remplissant le formulaire ci-dessous. Nous ferons de notre mieux pour vous répondre dans les plus brefs délais.
-
 ## Coordonnées
 
 **Atelier Ô Vents**\
