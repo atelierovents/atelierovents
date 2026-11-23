@@ -28,7 +28,7 @@ const instruments = await getCollection('occasions');
         {instruments.map((instrument) => (
           <a href={`/occasions/${instrumentSlug(instrument.id)}`} class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
             {instrument.data.photo && (
-              <img src={instrument.data.photo} alt={instrument.data.title} class="w-full h-64 object-cover" />
+              <img src={instrument.data.photo} alt={instrument.data.title} class="w-full aspect-[4/3] object-cover" />
             )}
             <div class="p-6">
               <h2 class="text-xl font-bold text-brand mb-1">{instrument.data.title}</h2>

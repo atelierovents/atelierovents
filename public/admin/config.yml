@@ -40,7 +40,7 @@ collections:
                 name: "image"
                 widget: "image"
                 required: false
-                hint: "Sans photo, la section s'affiche en pleine largeur."
+                hint: "Sans photo, la section s'affiche en pleine largeur. Format conseillé : 4:3, 1600 px de large, WebP."
               - label: "Description de la photo"
                 name: "imageAlt"
                 widget: "string"
@@ -76,7 +76,11 @@ collections:
             fields:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
-              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+                hint: "Facultative. 4:3, 1600 px de large, WebP."
               - label: "Description de la photo"
                 name: "photoAlt"
                 widget: "string"
@@ -90,7 +94,11 @@ collections:
             fields:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
-              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+                hint: "Facultative. 4:3, 1600 px de large, WebP."
               - label: "Description de la photo"
                 name: "photoAlt"
                 widget: "string"
@@ -150,11 +158,15 @@ collections:
       - { label: "Marque", name: "marque", widget: "string", required: false }
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
       - { label: "État", name: "etat", widget: "select", options: ["Neuf", "Très bon état", "Bon état", "À réviser"] }
-      - { label: "Photo principale", name: "photo", widget: "image", required: false }
+      - label: "Photo principale"
+        name: "photo"
+        widget: "image"
+        required: false
+        hint: "Cadrage horizontal 4:3, 1600 px de large, WebP, moins de 300 Ko."
       - label: "Galerie"
         name: "galerie"
         widget: "list"
         required: false
-        hint: "La photo principale ouvre le carrousel, puis ces photos dans l'ordre. Le glisser-déposer change l'ordre."
+        hint: "La photo principale ouvre le carrousel, puis ces photos dans l'ordre. Le glisser-déposer change l'ordre. Même format que la photo principale : 4:3, 1600 px de large, WebP."
         field: { label: "Photo", name: "image", widget: "image" }
       - { label: "Description", name: "body", widget: "markdown" }
