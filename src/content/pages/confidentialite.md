@@ -4,7 +4,7 @@ title: Politique de confidentialité
 
 ## Responsable du traitement
 
-**Atelier Ô Vents** — Pierre Caudrelier\
+**Pierre Caudrelier**\
 15 avenue de la Tour\
 12330 Clairvaux-d'Aveyron\
 Téléphone : 07 89 84 36 01\
