@@ -7,6 +7,12 @@ public_folder: "/images/uploads"
 
 locale: fr
 
+# Mode éditorial : un enregistrement crée une branche et une pull request au
+# lieu d'écrire directement sur main. La fiche n'est donc pas construite par le
+# site tant qu'elle n'est pas publiée, et elle passe par les états Brouillon /
+# En relecture / Prêt.
+publish_mode: editorial_workflow
+
 collections:
   - name: "pages"
     label: "Pages"
