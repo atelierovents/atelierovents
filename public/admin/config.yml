@@ -16,7 +16,11 @@ collections:
         file: "src/content/pages/accueil.md"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Description pour les moteurs de recherche"
+            name: "subtitle"
+            widget: "text"
+            required: false
+            hint: "N'apparaît pas dans le bandeau : sert de description dans les résultats Google et les partages."
           - label: "Phrase d'accroche"
             name: "tagline"
             widget: "text"
@@ -54,7 +58,11 @@ collections:
         file: "src/content/pages/atelier.md"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Description pour les moteurs de recherche"
+            name: "subtitle"
+            widget: "text"
+            required: false
+            hint: "N'apparaît pas dans le bandeau : sert de description dans les résultats Google et les partages."
           - label: "Phrase d'accroche"
             name: "tagline"
             widget: "text"
@@ -83,7 +91,11 @@ collections:
         file: "src/content/pages/occasions.md"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Description pour les moteurs de recherche"
+            name: "subtitle"
+            widget: "text"
+            required: false
+            hint: "N'apparaît pas dans le bandeau : sert de description dans les résultats Google et les partages."
           - label: "Phrase d'accroche"
             name: "tagline"
             widget: "text"

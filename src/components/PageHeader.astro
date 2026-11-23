@@ -1,7 +1,10 @@
 ---
 /**
- * Bandeau de tête commun à toutes les pages : titre, sous-titre, puis une
- * phrase d'accroche optionnelle séparée par un filet doré.
+ * Bandeau de tête commun à toutes les pages : le titre, puis une phrase
+ * d'accroche optionnelle séparée par un filet doré.
+ *
+ * Le sous-titre n'est plus affiché — il reste dans le contenu pour décrire la
+ * page aux moteurs de recherche (meta description), pas pour la composer.
  *
  * L'accroche peut courir sur plusieurs lignes : elle a sa propre mesure
  * (max-w-2xl), une interligne détendue et un équilibrage des lignes
@@ -9,13 +12,12 @@
  */
 interface Props {
   title: string;
-  subtitle?: string;
   tagline?: string;
   /** Variante plus resserrée, pour les pages de service. */
   compact?: boolean;
 }
 
-const { title, subtitle, tagline, compact = false } = Astro.props;
+const { title, tagline, compact = false } = Astro.props;
 ---
 
 <section class:list={[compact ? 'py-14' : 'py-20']}>
@@ -24,16 +26,10 @@ const { title, subtitle, tagline, compact = false } = Astro.props;
       {title}
     </h1>
 
-    {subtitle && (
-      <p class="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-stone-600">
-        {subtitle}
-      </p>
-    )}
-
     {tagline && (
       <>
-        <div class="mx-auto mt-7 h-px w-16 bg-gold"></div>
-        <p class="mx-auto mt-7 max-w-2xl text-pretty text-base leading-relaxed text-stone-500">
+        <div class="mx-auto mt-8 h-px w-16 bg-gold"></div>
+        <p class="mx-auto mt-8 max-w-2xl text-pretty text-base leading-relaxed text-stone-500">
           {tagline}
         </p>
       </>
