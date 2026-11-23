@@ -12,10 +12,8 @@ const { Content } = await entry.render();
   <PageHeader title={title} tagline={tagline} compact />
 
   <section class="max-w-5xl mx-auto px-4 pb-16">
-    <p class="text-stone-600 mb-10 max-w-2xl">
-      Une question, une demande particulière ? Laissez-nous votre message en remplissant le formulaire ci-dessous.
-      Nous ferons de notre mieux pour vous répondre dans les plus brefs délais.
-    </p>
+    <!-- L'introduction est l'accroche du bandeau : elle est saisie dans l'admin,
+         et ne doit pas être répétée ici. -->
 
     <!-- Formulaire de contact -->
     <form
