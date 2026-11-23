@@ -63,6 +63,18 @@ const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
         method="POST"
         class="space-y-6"
       >
+        <!-- Piège à robots fourni par Formdall : invisible pour un visiteur,
+             rempli par les scripts qui remplissent tout à l'aveugle. Le nom du
+             champ est volontairement absent de leur documentation, ne pas le
+             renommer. -->
+        <input
+          type="text"
+          name="_url"
+          tabindex="-1"
+          autocomplete="off"
+          style="position:absolute;left:-9999px"
+          aria-hidden="true"
+        />
 
         <div>
           <label for="nom" class="block text-sm font-medium mb-1">Nom <span class="text-red-600">*</span></label>
