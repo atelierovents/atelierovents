@@ -46,14 +46,23 @@ const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
         <p class="text-sm">Merci, nous vous répondrons dans les plus brefs délais.</p>
       </div>
 
+      <!-- Confirmation pour le visiteur sans JavaScript : Formdall le renvoie
+           ici avec ?envoye=1 après un envoi classique. -->
+      <div
+        id="contact-sent"
+        role="status"
+        class="hidden rounded-lg border border-green-300 bg-green-50 p-6 text-green-900"
+      >
+        <p class="font-semibold mb-1">Message envoyé.</p>
+        <p class="text-sm">Merci, nous vous répondrons dans les plus brefs délais.</p>
+      </div>
+
       <form
         id="contact-form"
-        action="https://api.web3forms.com/submit"
+        action="https://api.formdall.de/api/v1/f/6spWIgyiUfDxttNMoU45awnbERbNA8yK1Mid4UGe"
         method="POST"
         class="space-y-6"
       >
-        <input type="hidden" name="access_key" value="29d1abbc-113b-4826-8fa2-e4f16a538d2e" />
-        <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
 
         <div>
           <label for="nom" class="block text-sm font-medium mb-1">Nom <span class="text-red-600">*</span></label>
@@ -95,8 +104,8 @@ const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
 
         <p class="text-xs text-stone-500 leading-relaxed">
           Les champs marqués d'un <span class="text-red-600">*</span> sont obligatoires.
-          Vos informations servent uniquement à répondre à votre demande : voir les
-          <a href="/mentions-legales" class="underline hover:text-brand">mentions légales</a>.
+          Vos informations servent uniquement à répondre à votre demande : voir la
+          <a href="/confidentialite" class="underline hover:text-brand">politique de confidentialité</a>.
         </p>
       </form>
     </div>
@@ -126,6 +135,13 @@ const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
   </section>
 
   <script>
+    // Retour d'un envoi classique (JavaScript désactivé) : Formdall redirige
+    // vers cette page avec ?envoye=1.
+    if (new URLSearchParams(window.location.search).get('envoye') === '1') {
+      document.querySelector('#contact-sent')?.classList.remove('hidden');
+      document.querySelector('#contact-form')?.classList.add('hidden');
+    }
+
     // Envoi sans quitter la page. Sans JavaScript, le formulaire part quand même
     // vers Web3Forms, qui affiche sa propre page de confirmation.
     const form = document.querySelector<HTMLFormElement>('#contact-form');
@@ -144,8 +160,8 @@ const phone = { label: '07 89 84 36 01', href: 'tel:+33789843601' };
           headers: { Accept: 'application/json' },
           body: new FormData(form),
         });
-        const result = await response.json();
-        if (!response.ok || result.success !== true) throw new Error(result.message ?? 'Échec de l’envoi');
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success === false) throw new Error(result.error ?? 'Échec de l’envoi');
 
         form.classList.add('hidden');
         success?.classList.remove('hidden');

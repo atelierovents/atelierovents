@@ -133,6 +133,13 @@ collections:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
+      - name: "confidentialite"
+        label: "Politique de confidentialité"
+        file: "src/content/pages/confidentialite.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
   - name: "instruments"
     label: "Instruments d'occasion"
     folder: "src/content/occasions"
