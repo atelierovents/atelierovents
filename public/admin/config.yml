@@ -154,10 +154,12 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Nom de l'instrument", name: "title", widget: "string" }
-      - { label: "Marque", name: "marque", widget: "string", required: false }
+      - label: "Instrument (nom, marque, référence)"
+        name: "title"
+        widget: "string"
+        hint: "Une seule ligne : par exemple « Saxhorn basse Courtois AC164 n°12705 »."
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
-      - { label: "État", name: "etat", widget: "select", options: ["Neuf", "Très bon état", "Bon état", "À réviser"] }
+      - { label: "État", name: "etat", widget: "select", options: ["État neuf", "Très bon état", "Bon état", "En état"] }
       - label: "Photo principale"
         name: "photo"
         widget: "image"

@@ -32,9 +32,6 @@ const instruments = await getCollection('occasions');
             )}
             <div class="p-6">
               <h2 class="text-xl font-bold text-brand mb-1">{instrument.data.title}</h2>
-              {instrument.data.marque && (
-                <p class="text-sm text-stone-500 mb-2">{instrument.data.marque}</p>
-              )}
               <div class="flex items-center gap-4 text-sm">
                 {instrument.data.prix && (
                   <span class="font-semibold text-gold-dark">{instrument.data.prix} €</span>

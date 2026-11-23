@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { instrument } = Astro.props;
-const { title, marque, prix, etat, photo, galerie } = instrument.data;
+const { title, prix, etat, photo, galerie } = instrument.data;
 const { Content } = await render(instrument);
 
 // La photo principale ouvre le carrousel, la galerie suit. L'admin écrit une
@@ -26,7 +26,7 @@ const photos = [
 
 ---
 
-<Layout title={title} description={`${title} — ${marque ?? ''} ${etat ?? ''}`}>
+<Layout title={title} description={`${title} — ${etat ?? ''}`}>
   <section class="max-w-3xl mx-auto px-4 py-16">
     <a href="/occasions" class="text-sm text-gold-dark hover:underline mb-6 inline-block">← Retour aux occasions</a>
 
@@ -35,7 +35,6 @@ const photos = [
     )}
 
     <h1 class="text-3xl font-bold text-brand mb-2">{title}</h1>
-    {marque && <p class="text-stone-500 mb-4">{marque}</p>}
 
     <div class="flex items-center gap-4 mb-8">
       {prix && <span class="text-2xl font-semibold text-gold-dark">{prix} €</span>}

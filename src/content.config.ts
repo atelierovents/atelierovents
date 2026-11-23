@@ -42,7 +42,6 @@ const occasions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/occasions' }),
   schema: z.object({
     title: z.string(),
-    marque: z.string().optional(),
     prix: z.number().optional(),
     etat: z.string().optional(),
     photo: z.string().optional(),

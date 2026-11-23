@@ -1,6 +1,5 @@
 ---
 title: Saxhorn basse Courtois AC164 n°12705
-marque: ""
 prix: 1800
 etat: Bon état
 ---
