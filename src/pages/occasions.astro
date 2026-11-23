@@ -8,8 +8,12 @@ const entry = await getEntry('pages', 'occasions');
 const { title, subtitle, tagline } = entry.data;
 const { Content } = await entry.render();
 
-const instruments = await getCollection('occasions');
-const slugs = instrumentSlugs(instruments);
+const all = await getCollection('occasions');
+// Les adresses se calculent sur la collection complète : une fiche vendue et
+// une fiche disponible portant le même nom doivent obtenir le même suffixe ici
+// et dans les routes.
+const slugs = instrumentSlugs(all);
+const instruments = all.filter((instrument) => instrument.data.vendu !== true);
 ---
 
 <Layout title={title} description={subtitle || tagline}>

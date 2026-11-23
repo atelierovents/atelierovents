@@ -44,6 +44,9 @@ const occasions = defineCollection({
     title: z.string(),
     prix: z.number().optional(),
     etat: z.string().optional(),
+    // Un instrument vendu garde sa fiche — elle documente l'atelier — mais sort
+    // de la liste des occasions disponibles.
+    vendu: z.boolean().optional(),
     photo: z.string().optional(),
     // Decap écrit une liste de chemins ; la forme { image } reste tolérée.
     galerie: z.array(z.union([z.string(), z.object({ image: z.string() })])).optional(),

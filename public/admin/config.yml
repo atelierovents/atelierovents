@@ -160,6 +160,12 @@ collections:
         hint: "Une seule ligne : par exemple « Saxhorn basse Courtois AC164 n°12705 »."
       - { label: "Prix (€)", name: "prix", widget: "number", required: false }
       - { label: "État", name: "etat", widget: "select", options: ["État neuf", "Très bon état", "Bon état", "En état"] }
+      - label: "Vendu"
+        name: "vendu"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "À cocher quand l'instrument est parti. La fiche reste en ligne avec un bandeau « Vendu », mais il disparaît de la liste des occasions."
       - label: "Photo principale"
         name: "photo"
         widget: "image"
