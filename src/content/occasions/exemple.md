@@ -6,5 +6,6 @@ etat: Bon état
 photo: /images/uploads/p1030547.webp
 galerie:
   - /images/uploads/p1030551.webp
+  - /images/uploads/p1030546.webp
 ---
 Trombone complet, prêt à jouer.
