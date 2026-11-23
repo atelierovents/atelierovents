@@ -1,0 +1,22 @@
+/*
+ * Ajustements de l'interface d'administration (Decap CMS).
+ *
+ * Decap affiche les aperçus d'image à leur taille naturelle : une photo de
+ * 1600 px déborde donc de la fenêtre. Les sélecteurs ci-dessous visent l'image
+ * nue (sans classe), ce qui n'entre pas en conflit avec les vignettes, dont la
+ * taille est fixée par une classe.
+ */
+img {
+  max-width: 100%;
+  max-height: 55vh;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Le voile de prévisualisation reste au-dessus du contenu, sans jamais occuper
+   tout l'écran. */
+[class*='StyledModal'] img,
+[class*='MediaLibrary'] img {
+  max-height: 50vh;
+}
