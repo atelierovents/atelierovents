@@ -1,5 +1,5 @@
 ---
-title: Trombone complet
+title: Trombone complet Selmer 1200 n°11948
 marque: Selmer 1200 n°11948
 prix: 750
 etat: Bon état
