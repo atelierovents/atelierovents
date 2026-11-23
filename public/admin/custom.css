@@ -1,22 +1,23 @@
 /*
  * Ajustements de l'interface d'administration (Decap CMS).
  *
- * Decap affiche les aperçus d'image à leur taille naturelle : une photo de
- * 1600 px déborde donc de la fenêtre. Les sélecteurs ci-dessous visent l'image
- * nue (sans classe), ce qui n'entre pas en conflit avec les vignettes, dont la
- * taille est fixée par une classe.
+ * Decap dimensionne ses aperçus d'image avec des styles générés à l'exécution
+ * (classes `css-…`), qu'une simple règle sur `img` ne suffit pas toujours à
+ * contenir. D'où le `!important` : il ne porte que sur la hauteur maximale,
+ * donc il ne peut pas agrandir une image, seulement l'empêcher de déborder.
+ *
+ * Les vignettes de la médiathèque sont bien plus petites que cette limite :
+ * elles ne sont pas affectées.
  */
 img {
-  max-width: 100%;
-  max-height: 55vh;
-  height: auto;
-  width: auto;
+  max-height: 55vh !important;
+  max-width: 100% !important;
+  height: auto !important;
   object-fit: contain;
 }
 
-/* Le voile de prévisualisation reste au-dessus du contenu, sans jamais occuper
-   tout l'écran. */
+/* Le voile de prévisualisation plein écran garde une marge autour de l'image. */
 [class*='StyledModal'] img,
 [class*='MediaLibrary'] img {
-  max-height: 50vh;
+  max-height: 50vh !important;
 }
