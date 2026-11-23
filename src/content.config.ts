@@ -13,6 +13,16 @@ const homeSection = z.object({
   linkUrl: z.string().optional(),
 });
 
+// Un bloc de la page Atelier (Bois, Cuivres) : titre, sous-titre, contenu Markdown.
+// Il vit dans le fichier de la page pour que l'admin tienne sur un seul écran.
+const atelierBlock = z.object({
+  title: z.string(),
+  subtitle: z.string().optional(),
+  photo: z.string().optional(),
+  photoAlt: z.string().optional(),
+  body: z.string().optional(),
+});
+
 // Collection pour les pages fixes (accueil, atelier, contact, mentions légales, occasions)
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
@@ -22,6 +32,8 @@ const pages = defineCollection({
     // Phrase d'accroche facultative, affichée sous le filet du bandeau.
     tagline: z.string().optional(),
     sections: z.array(homeSection).optional(),
+    bois: atelierBlock.optional(),
+    cuivres: atelierBlock.optional(),
   }),
 });
 

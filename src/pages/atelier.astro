@@ -2,18 +2,22 @@
 import Layout from '../components/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { getEntry } from 'astro:content';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 
 const main = await getEntry('pages', 'atelier');
-const bois = await getEntry('pages', 'atelier-bois');
-const cuivres = await getEntry('pages', 'atelier-cuivres');
-
-const { title, subtitle, tagline } = main.data;
+const { title, subtitle, tagline, bois, cuivres } = main.data;
 const { Content: MainContent } = await main.render();
-const { Content: BoisContent } = await bois.render();
-const { Content: CuivresContent } = await cuivres.render();
+
+// Les blocs Bois et Cuivres sont désormais des champs de la page : un seul écran
+// dans l'admin. Leur contenu reste du Markdown, rendu avec le processeur d'Astro
+// pour hériter des mêmes styles que le reste du site.
+const markdown = await createMarkdownProcessor();
+const toHtml = async (value?: string) => (value ? (await markdown.render(value)).code : '');
+const boisHtml = await toHtml(bois?.body);
+const cuivresHtml = await toHtml(cuivres?.body);
 ---
 
-<Layout title={title} description={subtitle}>
+<Layout title={title} description={subtitle || tagline}>
   <PageHeader title={title} tagline={tagline} />
 
   <!-- Introduction -->
@@ -25,29 +29,31 @@ const { Content: CuivresContent } = await cuivres.render();
 
   <!-- Deux cartes : Bois et Cuivres -->
   <section class="max-w-5xl mx-auto px-4 pb-16 grid md:grid-cols-2 gap-8">
-    <!-- Carte Bois -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <img src="/images/bois.jpg" alt="Instruments à vent en bois" class="w-full h-48 object-cover" />
-      <div class="p-6">
-        <h2 class="text-2xl font-bold text-brand mb-1">{bois.data.title}</h2>
-        <p class="text-sm text-stone-500 mb-4">{bois.data.subtitle}</p>
-        <div class="prose prose-sm">
-          <BoisContent />
+    {bois && (
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        {bois.photo && (
+          <img src={bois.photo} alt={bois.photoAlt ?? ''} class="w-full h-48 object-cover" />
+        )}
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-brand mb-1">{bois.title}</h2>
+          {bois.subtitle && <p class="text-sm text-stone-500 mb-4">{bois.subtitle}</p>}
+          <div class="prose prose-sm" set:html={boisHtml} />
         </div>
       </div>
-    </div>
+    )}
 
-    <!-- Carte Cuivres -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <img src="/images/cuivres.jpg" alt="Instruments à vent en cuivre" class="w-full h-48 object-cover" />
-      <div class="p-6">
-        <h2 class="text-2xl font-bold text-brand mb-1">{cuivres.data.title}</h2>
-        <p class="text-sm text-stone-500 mb-4">{cuivres.data.subtitle}</p>
-        <div class="prose prose-sm">
-          <CuivresContent />
+    {cuivres && (
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        {cuivres.photo && (
+          <img src={cuivres.photo} alt={cuivres.photoAlt ?? ''} class="w-full h-48 object-cover" />
+        )}
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-brand mb-1">{cuivres.title}</h2>
+          {cuivres.subtitle && <p class="text-sm text-stone-500 mb-4">{cuivres.subtitle}</p>}
+          <div class="prose prose-sm" set:html={cuivresHtml} />
         </div>
       </div>
-    </div>
+    )}
   </section>
 
   <!-- Appel à l'action -->

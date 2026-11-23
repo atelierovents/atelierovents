@@ -10,7 +10,7 @@ const { title, subtitle, tagline, sections = [] } = entry.data;
 const paragraphs = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 ---
 
-<Layout title={title} description={subtitle}>
+<Layout title={title} description={subtitle || tagline}>
   <PageHeader title={title} tagline={tagline} />
 
   <!-- Sections alternées : texte d'un côté, photo de l'autre.

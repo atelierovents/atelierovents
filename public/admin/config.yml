@@ -68,24 +68,35 @@ collections:
             widget: "text"
             required: false
             hint: "Facultative. S'affiche sous un filet doré ; plusieurs lignes possibles."
-          - { label: "Contenu", name: "body", widget: "markdown" }
-
-      - name: "atelier-bois"
-        label: "Atelier — Les bois"
-        file: "src/content/pages/atelier-bois.md"
-        fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Sous-titre", name: "subtitle", widget: "text" }
-          - { label: "Contenu", name: "body", widget: "markdown" }
-
-      - name: "atelier-cuivres"
-        label: "Atelier — Les cuivres"
-        file: "src/content/pages/atelier-cuivres.md"
-        fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Sous-titre", name: "subtitle", widget: "text" }
-          - { label: "Contenu", name: "body", widget: "markdown" }
-
+          - { label: "Contenu libre (facultatif, sous l'accroche)", name: "body", widget: "markdown", required: false }
+          - label: "Carte — Les bois"
+            name: "bois"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Description de la photo"
+                name: "photoAlt"
+                widget: "string"
+                required: false
+                hint: "Lu par les lecteurs d'écran."
+              - { label: "Contenu", name: "body", widget: "markdown", required: false }
+          - label: "Carte — Les cuivres"
+            name: "cuivres"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Description de la photo"
+                name: "photoAlt"
+                widget: "string"
+                required: false
+                hint: "Lu par les lecteurs d'écran."
+              - { label: "Contenu", name: "body", widget: "markdown", required: false }
       - name: "occasions"
         label: "Occasions (page)"
         file: "src/content/pages/occasions.md"
@@ -108,6 +119,11 @@ collections:
         file: "src/content/pages/contact.md"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
+          - label: "Phrase d'accroche"
+            name: "tagline"
+            widget: "text"
+            required: false
+            hint: "Facultative. S'affiche sous un filet doré ; plusieurs lignes possibles."
           - { label: "Introduction", name: "body", widget: "markdown" }
 
       - name: "mentions-legales"
