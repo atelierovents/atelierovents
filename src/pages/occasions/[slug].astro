@@ -2,12 +2,13 @@
 import Layout from '../../components/Layout.astro';
 import PhotoGallery from '../../components/PhotoGallery.astro';
 import { getCollection, render } from 'astro:content';
-import { instrumentSlug } from '../../lib/instrument-slug';
+import { instrumentSlugs } from '../../lib/instrument-slug';
 
 export async function getStaticPaths() {
   const instruments = await getCollection('occasions');
+  const slugs = instrumentSlugs(instruments);
   return instruments.map((instrument) => ({
-    params: { slug: instrumentSlug(instrument.id) },
+    params: { slug: slugs.get(instrument.id) },
     props: { instrument },
   }));
 }
