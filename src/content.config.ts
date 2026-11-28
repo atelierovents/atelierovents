@@ -31,6 +31,8 @@ const pages = defineCollection({
     subtitle: z.string().optional(),
     // Phrase d'accroche facultative, affichée sous le filet du bandeau.
     tagline: z.string().optional(),
+    // Frais de dossier affichés dans le bandeau « L'essentiel » de la location.
+    frais: z.number().optional(),
     sections: z.array(homeSection).optional(),
     bois: atelierBlock.optional(),
     cuivres: atelierBlock.optional(),

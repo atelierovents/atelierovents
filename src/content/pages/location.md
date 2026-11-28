@@ -1,13 +1,16 @@
 ---
 title: Location d'instruments
 tagline: Un instrument pour l'année scolaire, un remplacement avant un concert, ou l'essai d'un modèle avant de l'acheter.
+frais: 30
 ---
 
 ## Conditions de location
 
-**Durée** — La location se fait pour une durée convenue ensemble au départ.
+**Durée** — Location mensuelle, sans engagement. Elle se poursuit de mois en mois et s'arrête quand vous le souhaitez.
 
-**Caution** — Une caution est demandée à la remise de l'instrument ; elle est restituée au retour, déduction faite des réparations éventuelles.
+**Frais de dossier** — 30 € au début de chaque contrat.
+
+**Caution** — Un chèque de la valeur de l'instrument est demandé à la signature. Il n'est pas encaissé et vous est restitué au retour de l'instrument.
 
 **Entretien** — L'instrument est remis réglé et prêt à jouer. Les consommables (anches, graisse, chiffons) restent à votre charge.
 

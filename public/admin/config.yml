@@ -156,6 +156,7 @@ collections:
             name: "tagline"
             widget: "text"
             required: false
+          - { label: "Frais de dossier (€)", name: "frais", widget: "number", required: false, hint: "Affiché dans le bandeau « L'essentiel »." }
           - { label: "Conditions", name: "body", widget: "markdown", required: false }
 
       - name: "confidentialite"
@@ -219,7 +220,7 @@ collections:
         options: ["Saxophone", "Clarinette", "Flûte", "Trompette", "Cor", "Autre"]
       - { label: "Modèle", name: "modele", widget: "string", required: false }
       - { label: "Mensualité (€)", name: "mensualite", widget: "number", required: false, hint: "Laisser vide affiche « sur demande »." }
-      - { label: "Caution (€)", name: "caution", widget: "number", required: false }
+      - { label: "Caution — valeur de l'instrument (€)", name: "caution", widget: "number", required: false, hint: "Montant du chèque de caution, égal à la valeur de l'instrument." }
       - label: "État"
         name: "etat"
         widget: "select"
