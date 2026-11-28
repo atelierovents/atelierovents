@@ -33,6 +33,8 @@ const pages = defineCollection({
     tagline: z.string().optional(),
     // Frais de dossier affichés dans le bandeau « L'essentiel » de la location.
     frais: z.number().optional(),
+    // Questions fréquentes de la page Location : paires question / réponse.
+    faq: z.array(z.object({ question: z.string(), reponse: z.string() })).optional(),
     sections: z.array(homeSection).optional(),
     bois: atelierBlock.optional(),
     cuivres: atelierBlock.optional(),

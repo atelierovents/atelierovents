@@ -157,6 +157,14 @@ collections:
             widget: "text"
             required: false
           - { label: "Frais de dossier (€)", name: "frais", widget: "number", required: false, hint: "Affiché dans le bandeau « L'essentiel »." }
+          - label: "Questions fréquentes"
+            name: "faq"
+            widget: "list"
+            required: false
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "reponse", widget: "text" }
           - { label: "Conditions", name: "body", widget: "markdown", required: false }
 
       - name: "confidentialite"
