@@ -147,6 +147,17 @@ collections:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
+      - name: "location"
+        label: "Location d'instruments"
+        file: "src/content/pages/location.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - label: "Phrase d'accroche"
+            name: "tagline"
+            widget: "text"
+            required: false
+          - { label: "Conditions", name: "body", widget: "markdown", required: false }
+
       - name: "confidentialite"
         label: "Politique de confidentialité"
         file: "src/content/pages/confidentialite.md"
@@ -193,3 +204,31 @@ collections:
         widget: "markdown"
         required: false
         hint: "Peut rester vide dans un brouillon ; à renseigner avant publication."
+
+  - name: "locations"
+    label: "Location — instruments"
+    label_singular: "Instrument loué"
+    folder: "src/content/locations"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Instrument", name: "title", widget: "string", hint: "Ex. : Saxophone alto" }
+      - label: "Famille"
+        name: "famille"
+        widget: "select"
+        options: ["Saxophone", "Clarinette", "Flûte", "Trompette", "Cor", "Autre"]
+      - { label: "Modèle", name: "modele", widget: "string", required: false }
+      - { label: "Mensualité (€)", name: "mensualite", widget: "number", required: false, hint: "Laisser vide affiche « sur demande »." }
+      - { label: "Caution (€)", name: "caution", widget: "number", required: false }
+      - label: "État"
+        name: "etat"
+        widget: "select"
+        required: false
+        options: ["État neuf", "Très bon état", "Bon état", "En état"]
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - label: "Disponible"
+        name: "disponible"
+        widget: "boolean"
+        default: true
+        required: false
+        hint: "Décocher quand l'instrument est loué : il reste listé, avec le badge « Loué »."

@@ -53,4 +53,20 @@ const occasions = defineCollection({
   }),
 });
 
-export const collections = { pages, occasions };
+// Instruments proposés à la location : une entrée par instrument, sans page
+// dédiée — le tableau de la page Location suffit tant que la flotte reste petite.
+const locations = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/locations' }),
+  schema: z.object({
+    title: z.string(),
+    famille: z.string(),
+    modele: z.string().optional(),
+    mensualite: z.number().optional(),
+    caution: z.number().optional(),
+    etat: z.string().optional(),
+    disponible: z.boolean().optional(),
+    photo: z.string().optional(),
+  }),
+});
+
+export const collections = { pages, occasions, locations };
